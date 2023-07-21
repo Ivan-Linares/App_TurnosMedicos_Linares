@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.Master.cs" Inherits="App_TurnosMedicos_Linares.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MasterWebForm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="Header">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <a class="navbar-brand" href="Index.aspx">Clinica Privada Linares</a>
+                <ul class="navbar-nav">
+                    <%if (EsRecepcionista())
+                        {  %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Index.aspx">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AsistenteTurnosSecretaria.aspx">Asistente de Turnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="GestionTurnosSecretaria.aspx">Ver Turnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HlRecepcionista" CssClass="nav-link" NavigateUrl="GestionUsuariosSecretaria.aspx" runat="server">Administrar</asp:HyperLink>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Gestion Usuario</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="GestionDatosSecretaria.aspx">Gestionar datos</a></li>
+                            <li><a class="dropdown-item" href="GestionContraseñaSecretaria.aspx">Cambiar contraseña</a></li>
+                        </ul>
+                    </li>
+                    <% }%>
+                    <%if (EsDoctor())
+                        {  %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Index.aspx">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="GestionTurnosDoctor.aspx">Ver Mis Turnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Gestion Usuario</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="GestionUsuarioDoctor.aspx">Gestionar datos</a></li>
+                            <li><a class="dropdown-item" href="GestionContraeñaDoctor.aspx">Cambiar contraseña</a></li>
+                        </ul>
+                    </li>
+                    <% }%>
+                    <%if (EsPaciente())
+                        {  %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Index.aspx">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AsistenteTurnosPaciente.aspx">Asistente de Turnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="GestionTurnosPaciente.aspx">Mis Turnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Gestion Usuario</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="GestionUsuarioPaciente.aspx">Gestionar datos</a></li>
+                            <li><a class="dropdown-item" href="GestionContraseñaPaciente.aspx">Cambiar contraseña</a></li>
+                        </ul>
+                    </li>
+                    <% }%>
+                    <li class="nav-item">
+                        <asp:Button ID="BtnUnlog" runat="server" class="btn btn-outline-danger" Text="Log-Out" OnClick="BtnUnlog_Click" Visible="true" CausesValidation="false" />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <footer class="footer-distributed">
+            <div class="footer-right">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+
+            <div class="footer-left">
+                <p class="footer-links">
+                    <a class="link-1" href="Index.aspx">Home</a>
+                    <a href="#">Contacto</a>
+                    <a href="#">Nosotros</a>
+                </p>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
